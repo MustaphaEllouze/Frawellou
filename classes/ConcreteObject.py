@@ -1,6 +1,9 @@
 from AbstractObject import (
     AbstractObject,
 )
+from ObjectManager import(
+    ObjectManager,
+)
 
 class ConcreteObject(AbstractObject):
 
@@ -9,6 +12,7 @@ class ConcreteObject(AbstractObject):
     def __init__(self,value) -> None:
         super().__init__()
         self.value = value
+        self.manager = ObjectManager()
     
     def do_something():
         pass
