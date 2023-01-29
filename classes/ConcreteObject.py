@@ -1,21 +1,23 @@
-from AbstractObject import (
-    AbstractObject,
-)
 from ObjectManager import(
     ObjectManager,
 )
 
-class ConcreteObject(AbstractObject):
+class ConcreteObject():
 
-    CO_from_id,CO_from_no,CO_from_name = AbstractObject.init_class_attributes()
+    manager = ObjectManager(name='ConcreteObject')
 
-    def __init__(self,value) -> None:
-        super().__init__()
+    @manager.init_manager
+    def __new__(cls,*args,**kwargs):
+        return super().__new__(cls)
+    
+    def __init__(self,value):
         self.value = value
-        self.manager = ObjectManager()
     
     def do_something():
         pass
     
 
 ConcreteObject(5)
+ConcreteObject(10)
+
+print(ConcreteObject.manager.__dict__)
