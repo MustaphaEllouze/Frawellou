@@ -22,3 +22,10 @@ class ObjectManager():
             self.objects.append(new_object)
         
         return init_wrapper
+
+def managed_class(cls):
+    cls.manager = ObjectManager(name=cls.__name__)
+    cls.is_managed = True
+    cls.__init__ = cls.manager.init_manager(cls.__init__)
+    
+    return cls

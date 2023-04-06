@@ -1,21 +1,15 @@
-from ObjectManager import(
-    ObjectManager,
-)
+from ObjectManager import managed_class
 
+@managed_class
 class ConcreteObject():
-
-    manager = ObjectManager(name='ConcreteObject')
-
-    @manager.init_manager
-    def __new__(cls,*args,**kwargs):
-        return super().__new__(cls)
     
     def __init__(self,value):
         self.value = value
+        return self
     
     def do_something():
         pass
-    
+   
 
 ConcreteObject(5)
 ConcreteObject(10)
