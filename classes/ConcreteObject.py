@@ -1,6 +1,6 @@
-from ObjectManager import managed_class
+from ObjectManager import managed_class,managed_class_group
 
-@managed_class
+@managed_class_group(2)
 class ConcreteObject():
     
     def __init__(self,value):
