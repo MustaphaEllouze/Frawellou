@@ -7,9 +7,11 @@ class ObjectManager():
     def __init__(
         self,
         name:str,
+        cls,
         management_group=MANAGEMENT_GROUP_DEFAULT_VALUE,
     ):
         self.managed_class_name= name
+        self.managed_class = cls
         self.objects = []
         self.getter_from_id = {}
         self.getter_from_no = {}
@@ -30,7 +32,7 @@ class ObjectManager():
         return init_wrapper
 
 def managed_class(cls,management_group=MANAGEMENT_GROUP_DEFAULT_VALUE):
-    cls.manager = ObjectManager(name=cls.__name__,management_group=management_group)
+    cls.manager = ObjectManager(name=cls.__name__,cls=cls,management_group=management_group)
     cls.is_managed = True
     cls.__init__ = cls.manager.init_manager(cls.__init__)
     
